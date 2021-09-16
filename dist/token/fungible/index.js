@@ -1,0 +1,3 @@
+const mintFungible = () => { };
+
+export { mintFungible };
