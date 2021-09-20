@@ -1,0 +1,1 @@
+import{createStatefulContext as t}from"create-stateful-context";import{getConnection as n}from"../utils/connection/index.js";const[e,o]=t({initialState:{connection:null,pubkey:null},updateState:async({connection:t,updateState:e})=>(t||e({connection:await n()}),!1)});export{e as SolanaStateProvider,o as useSolanaState};

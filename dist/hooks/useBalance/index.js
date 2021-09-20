@@ -1,0 +1,1 @@
+import{useState as o,useEffect as n}from"react/index.js";import{usePubkey as t}from"../usePubkey/index.js";import*as e from"../../index.js";import{useSolanaState as r}from"../../index.js";console.log(e);const s=e=>{const s=t(e),{connection:i}=r(),[c,m]=o();return n((()=>{(async()=>{const o=await(i?.getBalanceAndContext(s));o&&m(o)})()}),[s,i]),c};export{s as useSolanaBalance};

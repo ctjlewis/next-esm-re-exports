@@ -1,0 +1,1 @@
+import{PublicKey as o}from"@solana/web3.js";export{ASSOCIATED_TOKEN_PROGRAM_ID,TOKEN_PROGRAM_ID}from"@solana/spl-token/lib/index.cjs.js";const e=new o("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");export{e as TOKEN_METADATA_PROGRAM_ID};

@@ -1,0 +1,1 @@
+import{Connection as o}from"@solana/web3.js";import{getRpcUrl as t}from"../index.js";let n;const e=async()=>{const e=await t();n=new o(e,"confirmed");const s=await n.getVersion();return console.log("Connection to cluster established:",e,s),n},s=async()=>n||await e();export{n as connection,e as establishConnection,s as getConnection};
