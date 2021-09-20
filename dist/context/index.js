@@ -1,1 +1,18 @@
-import{createStatefulContext as t}from"create-stateful-context";import{getConnection as n}from"../utils/connection/index.js";const[e,o]=t({initialState:{connection:null,pubkey:null},updateState:async({connection:t,updateState:e})=>(t||e({connection:await n()}),!1)});export{e as SolanaStateProvider,o as useSolanaState};
+import { createStatefulContext } from 'create-stateful-context';
+import { getConnection } from '../utils/connection/index.js';
+
+const DEFAULT_CONTEXT = {
+    connection: null,
+    pubkey: null,
+};
+const [SolanaStateProvider, useSolanaState] = createStatefulContext({
+    initialState: DEFAULT_CONTEXT,
+    updateState: async ({ connection, updateState }) => {
+        if (!connection) {
+            updateState({ connection: await getConnection() });
+        }
+        return false;
+    },
+});
+
+export { SolanaStateProvider, useSolanaState };

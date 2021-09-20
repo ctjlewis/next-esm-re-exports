@@ -1,1 +1,3 @@
-const o=()=>{};export{o as mintFungible};
+const mintFungible = () => { };
+
+export { mintFungible };

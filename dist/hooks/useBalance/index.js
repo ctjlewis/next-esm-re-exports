@@ -1,1 +1,36 @@
-import{useState as o,useEffect as n}from"react/index.js";import{usePubkey as t}from"../usePubkey/index.js";import*as e from"../../index.js";import{useSolanaState as r}from"../../index.js";console.log(e);const s=e=>{const s=t(e),{connection:i}=r(),[c,m]=o();return n((()=>{(async()=>{const o=await(i?.getBalanceAndContext(s));o&&m(o)})()}),[s,i]),c};export{s as useSolanaBalance};
+import { useState, useEffect } from 'react/index.js';
+import { usePubkey } from '../usePubkey/index.js';
+import * as rootStarImport from '../../index.js';
+import { useSolanaState } from '../../index.js';
+
+console.log('inside hooks/useBalance', rootStarImport);
+/**
+ * Check the SOL or SPL token balance of an address.
+ *
+ * @param accountAddress The account to check.
+ * @param tokenMint The token for which to check the balance of
+ * `accountAddress`. If not provided, returns SOL balance.
+ * @returns The balance of `accountAddress` in SOL or the given token mint.
+ */
+const useSolanaBalance = (address) => {
+    const publicKey = usePubkey(address);
+    const { connection } = useSolanaState();
+    const [balance, setBalance] = useState();
+    useEffect(() => {
+        (async () => {
+            const newBalance = await connection?.getBalanceAndContext(publicKey);
+            if (newBalance) {
+                setBalance(newBalance);
+            }
+        })();
+    }, [publicKey, connection]);
+    return balance;
+};
+/**
+ * Get the token balance of a given address and token mint.
+ */
+// export const useTokenBalance = (address: KeyLike, mintAddress: KeyLike) => {
+//   const connection = useConnection();
+// };
+
+export { useSolanaBalance };

@@ -5,8 +5,8 @@ import { usePubkey } from '../usePubkey';
 
 // @todo Investigate re-exports.
 import { useSolanaState } from '../..';
-import * as test from '../..';
-console.log(test);
+import * as rootStarImport from '../..';
+console.log('inside hooks/useBalance', rootStarImport);
 
 /**
  * Check the SOL or SPL token balance of an address.

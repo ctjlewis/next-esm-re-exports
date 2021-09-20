@@ -1,1 +1,22 @@
-import{Keypair as r}from"@solana/web3.js";import e from"mz/fs.js";const o=()=>{if(!process.env.SOLANA_PRIVATE_KEY)throw new Error("Environment variable does not define Solana privkey.");const e=Uint8Array.from(JSON.parse(process.env.SOLANA_PRIVATE_KEY));return r.fromSecretKey(e)},n=()=>o().publicKey,t=()=>o().secretKey,s=async o=>{const n=await e.readFile(o,{encoding:"utf8"}),t=Uint8Array.from(JSON.parse(n));return r.fromSecretKey(t)};export{s as createKeypairFromFile,o as getServerKeypair,t as getServerPrivkey,n as getServerPubkey};
+import { Keypair } from '@solana/web3.js';
+import fs from 'mz/fs.js';
+
+const getServerKeypair = () => {
+    if (!process.env.SOLANA_PRIVATE_KEY) {
+        throw new Error('Environment variable does not define Solana privkey.');
+    }
+    const keyBytes = Uint8Array.from(JSON.parse(process.env.SOLANA_PRIVATE_KEY));
+    return Keypair.fromSecretKey(keyBytes);
+};
+const getServerPubkey = () => getServerKeypair().publicKey;
+const getServerPrivkey = () => getServerKeypair().secretKey;
+/**
+ * Create a Keypair from a secret key stored in file as bytes' array
+ */
+const createKeypairFromFile = async (filePath) => {
+    const secretKeyString = await fs.readFile(filePath, { encoding: 'utf8' });
+    const secretKey = Uint8Array.from(JSON.parse(secretKeyString));
+    return Keypair.fromSecretKey(secretKey);
+};
+
+export { createKeypairFromFile, getServerKeypair, getServerPrivkey, getServerPubkey };

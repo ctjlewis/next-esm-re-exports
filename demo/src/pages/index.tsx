@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 // import { ExampleComponent, useSolanaBalance } from '../../../dist/components';
-import { useSolanaBalance } from '../../..';
+import { useSolanaBalance } from '../../../dist/hooks';
 import { BigButton } from '../../../dist/components/BigButton';
 const EXAMPLE_WALLET = 'FeuT9mmNGSDxaUVSMPLxbGhybh8i3mjUGKhpnXHuzyCe';
 

@@ -1,1 +1,19 @@
-import{getConnection as o}from"../../utils/connection/index.js";import{useEffect as n}from"react/index.js";import{useSolanaState as t}from"../../context/index.js";const c=()=>{const{connection:c,loading:e,updateState:i}=t();return console.log({loading:e}),n((()=>{(async()=>{console.log("Top of callback useConnection"),i({connection:await o()})})()}),[i]),c};export{c as useConnection};
+import { getConnection } from '../../utils/connection/index.js';
+import { useEffect } from 'react/index.js';
+import { useSolanaState } from '../../context/index.js';
+
+const useConnection = () => {
+    const { connection, loading, updateState } = useSolanaState();
+    console.log({ loading });
+    useEffect(() => {
+        (async () => {
+            console.log('Top of callback useConnection');
+            updateState({
+                connection: await getConnection(),
+            });
+        })();
+    }, [updateState]);
+    return connection;
+};
+
+export { useConnection };

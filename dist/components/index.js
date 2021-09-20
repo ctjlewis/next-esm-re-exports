@@ -1,1 +1,1 @@
-export*from"./BigButton/index.js";
+export * from './BigButton/index.js';

@@ -1,1 +1,3 @@
-const o=()=>{};export{o as mintNft};
+const mintNft = () => { };
+
+export { mintNft };
