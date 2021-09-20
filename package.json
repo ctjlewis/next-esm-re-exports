@@ -1,5 +1,5 @@
 {
-  "name": "@use-solana/react",
+  "name": "next-esm-re-exports",
   "author": "C. Lewis <ctj.lewis@icloud.com>",
   "type": "module",
   "version": "0.0.1",
@@ -16,10 +16,7 @@
     "build": "tszip build",
     "test": "tszip test",
     "lint": "tszip lint",
-    "prepare": "tszip build",
-    "rust:compile": "cargo build-bpf --manifest-path contracts/rust/Cargo.toml --bpf-out-dir contracts/rust/dist",
-    "rust:clean": "cargo clean --manifest-path contracts/rust/Cargo.toml && rm -rf contracts/rust/dist",
-    "rust:test": "cargo test-bpf --manifest-path contracts/rust/Cargo.toml"
+    "prepare": "tszip build"
   },
   "module": "./dist/index.js",
   "exports": {
